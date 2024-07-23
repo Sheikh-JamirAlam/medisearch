@@ -30,7 +30,7 @@ export default async function Navbar() {
           </a>
         ) : (
           <div className="flex items-center gap-2">
-            <LogoutButton user={session.user?.name} />
+            <LogoutButton user={session.user?.name?.substring(0, session.user?.name?.indexOf(" "))} />
           </div>
         )}
       </div>
