@@ -12,9 +12,9 @@ export function LoginForm() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const signInWithEmail = async () => {
-    setIsLoading(true);
     const doesUserExist = await checkExitingUser(email);
     if (doesUserExist) {
+      setIsLoading(true);
       await signIn("credentials", {
         email: email,
         password: pass,

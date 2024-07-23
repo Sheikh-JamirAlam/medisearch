@@ -13,12 +13,12 @@ export function SignupForm() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const signInWithEmail = async () => {
-    setIsLoading(true);
     const doesUserExist = await checkExitingUser(email);
     if (doesUserExist) {
       setIsLoading(false);
       toast.error("Email address already exists.");
     } else {
+      setIsLoading(true);
       await signIn("credentials", {
         email: email,
         password: pass,
