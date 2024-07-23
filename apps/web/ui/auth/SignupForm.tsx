@@ -106,6 +106,7 @@ export function SignupForm() {
       <div className="mt-6">
         <button
           type="submit"
+          onClick={() => setIsLoading(true)}
           className="w-full px-5 py-2 font-semibold rounded-lg border-2 border-secondary-blue text-primary-white bg-primary-blue drop-shadow transition-all hover:bg-secondary-blue active:scale-95"
         >
           Sign up
