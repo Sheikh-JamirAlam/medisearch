@@ -4,27 +4,38 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { toast } from "react-hot-toast";
 import { checkExitingUser } from "@/lib/user/signup";
+import { Loading } from "../Icons";
 
 export function SignupForm() {
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [pass, setPass] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const signInWithEmail = async () => {
     const doesUserExist = await checkExitingUser(email);
     if (doesUserExist) {
       toast.error("Email address already exists.");
     } else {
+      setIsLoading(true);
       await signIn("credentials", {
         email: email,
         password: pass,
         name: name,
       });
+      setIsLoading(false);
     }
   };
 
   return (
     <form action={signInWithEmail}>
+      {isLoading ? (
+        <div className="w-screen h-screen left-0 top-0 text-6xl absolute z-10 flex justify-center items-center bg-[rgba(0,0,0,0.15)]">
+          <Loading className="text-primary-blue z-20" />
+        </div>
+      ) : (
+        ""
+      )}
       <div className="flex flex-col gap-3 text-sm">
         <div>
           <p className="mb-2 font-semibold">Full Name</p>
