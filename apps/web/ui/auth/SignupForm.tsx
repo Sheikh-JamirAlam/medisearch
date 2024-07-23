@@ -25,6 +25,7 @@ export function SignupForm() {
         name: name,
       });
       setIsLoading(false);
+      toast.success("Signup successful");
     }
   };
 

@@ -20,6 +20,7 @@ export function LoginForm() {
         password: pass,
       });
       setIsLoading(false);
+      toast.success("Login successful");
     } else {
       setIsLoading(false);
       toast.error("Email address does not exist.");
