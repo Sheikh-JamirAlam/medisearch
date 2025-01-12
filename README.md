@@ -1,3 +1,7 @@
+# Project
+
+This is just a fun personal redesign of [medisearch.io](https://medisearch.io).
+
 # Turborepo starter
 
 This is an official starter Turborepo.
